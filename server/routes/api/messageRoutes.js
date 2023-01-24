@@ -3,9 +3,11 @@ const {
   getSingleMessage,
   getMessages,
   createMessage,
-} = require('../../controllers/messageController');
+} = require('../../controllers/messageControllers');
 
-router.route('/').get(getMessages).post(createMessage);
+router.route('/').get(getMessages);
+
+router.route('/').post(createMessage);
 
 router.route('/:messageId').get(getSingleMessage);
 

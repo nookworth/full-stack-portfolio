@@ -42,6 +42,23 @@ export default function Contact() {
       setErrorMessage("Invalid email address");
       return;
     }
+
+    if (!name || !email || !message) {
+      setErrorMessage("All three fields are required.");
+      return;
+    }
+
+    const createMessage = fetch("http://localhost:3001/api/messages", {
+      method: "POST",
+      mode: "same-origin",
+      body: {
+        messageText: message,
+        messageAuthor: name,
+        messageEmail: email
+      },
+    })
+
+    console.log(createMessage);
   };
 
   const handleClick = (e) => {
